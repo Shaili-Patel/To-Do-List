@@ -17,7 +17,6 @@ if(taskInput){
     // Call the function to update the task list display
     displayTasks()
 }
-
 })
 
 // A function to display tasks in the list
@@ -41,10 +40,25 @@ li.classList.add(
 'align-items-center'
 )
 
-
-li.innerHTML = `${task} <button class='btn btn-success btn-sm' onclick='removeTask()${index}'> √ </button>`
+li.innerHTML = `${task} <button class='btn btn-success btn-sm' onclick='removeTask(${index})'> √ </button>`
 //  Append the new task to the task list
 taskList.appendChild(li)
-
 })
 }
+
+// Function to remove a task from the list when the check button is clicked
+
+function removeTask(index){
+    // Remove the task at the given index from array
+tasks.splice(index, 1)
+// Call the function to update the task list display
+displayTasks()
+}
+
+// Event listener for the "clear all" tasks
+document.getElementById("clearTaskBtn").addEventListener('click', function (){
+    // Empty the tasks array to remove all tasks
+    tasks = [];
+    // Call the function to update the task list display
+    displayTasks();
+});
